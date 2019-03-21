@@ -35,7 +35,7 @@ type Request = {
 
 export default function handleRequest(req: Request) {
   const { roomId, userId, messageContent } = req.body;
-  const userJID = createUserID(userId);
-  const roomJID = createRoomID(roomId);
-  addMessage(userJID, roomJID, messageContent);
+  const userID = createUserID(userId);
+  const roomID = createRoomID(roomId);
+  addMessage(userID, roomID, messageContent);
 }
