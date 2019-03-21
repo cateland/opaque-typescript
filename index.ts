@@ -1,25 +1,25 @@
 import {
-  UserJID,
-  RoomJID,
+  UserID,
+  RoomID,
   MessageContent,
-  createUserJID,
-  createRoomJID
-} from "./JID";
+  createUserID,
+  createRoomID
+} from "./ID";
 
 
 type Message = {
-  user: UserJID;
+  user: UserID;
   message: MessageContent;
 };
 
 type Room = {
-  room: RoomJID,
+  room: RoomID,
   messages: Message[]
 };
 
 export function addMessage(
-  roomId: RoomJID,
-  userId: UserJID,
+  roomId: RoomID,
+  userId: UserID,
   messageContent: MessageContent
 ) {
   const room = { room: roomId, messages: [] };
@@ -35,7 +35,7 @@ type Request = {
 
 export default function handleRequest(req: Request) {
   const { roomId, userId, messageContent } = req.body;
-  const userJID = createUserJID(userId);
-  const roomJID = createRoomJID(roomId);
+  const userJID = createUserID(userId);
+  const roomJID = createRoomID(roomId);
   addMessage(userJID, roomJID, messageContent);
 }

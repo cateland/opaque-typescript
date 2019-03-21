@@ -1,9 +1,9 @@
 import {
-  UserJID,
-  RoomJID,
-  createUserJID,
-  createRoomJID
-} from "./JID";
+  UserID,
+  RoomID,
+  createUserID,
+  createRoomID
+} from "./ID";
 
 import {
   Message,
@@ -13,19 +13,19 @@ import {
 
 
 type Room = {
-  room: RoomJID,
+  room: RoomID,
   messages: Message[]
 };
 
 export function addMessage(
-  roomId: RoomJID,
-  userId: UserJID,
+  roomId: RoomID,
+  userId: UserID,
   messageContent: MessageContent
 ) {
   const room : Room = { room: roomId, messages: [] };
   // const message = { user: userId, message: messageContent } as Message;
   // const message : Message = createMessage(userId, messageContent);
-  room.messages.push({ user: userId, message: messageContent });
+  room.messages.push(message);
 }
 type Request = {
   body: {
@@ -37,7 +37,7 @@ type Request = {
 
 export default function handleRequest(req: Request) {
   const { roomId, userId, messageContent } = req.body;
-  const userJID = createUserJID(userId);
-  const roomJID = createRoomJID(roomId);
-  addMessage(roomJID, userJID , messageContent);
+  const userID = createUserID(userId);
+  const roomID = createRoomID(roomId);
+  addMessage(roomID, userID , messageContent);
 }

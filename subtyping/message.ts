@@ -1,21 +1,21 @@
 import { Opaque } from './opaque';
 import {
-    UserJID,
-} from "./JID";
+    UserID,
+} from "./ID";
 
 export type MessageContent = string;
 
 export type Message = Opaque<"Message", {
-    user: UserJID;
+    user: UserID;
     message: MessageContent;
 }>;
 
 // type $Message = Message & {
-//     user: UserJID;
+//     user: UserID;
 //     message: MessageContent;
 // }
 
-// export function createMessage(user: UserJID, message: MessageContent){
+// export function createMessage(user: UserID, message: MessageContent){
 //     return ({
 //         user,
 //         message
